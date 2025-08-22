@@ -41,15 +41,17 @@ const Hero = () => {
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
         <div className="space-y-8">
           {/* Name and Tagline */}
-          <div className="space-y-4">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight animate-fade-in-up">
-              <span className="block text-foreground">Jay Rupareliya</span>
-              <span className="block gradient-text animate-delay-200">
+          <div className="space-y-6">
+            <div className="animate-fade-in-up">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground">
+                Jay Rupareliya
+              </h1>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight gradient-text animate-delay-200 mt-2 pb-4">
                 UI/UX Designer
-              </span>
-            </h1>
+              </h2>
+            </div>
 
-            <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto animate-fade-in-up animate-delay-300">
+            <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto animate-fade-in-up animate-delay-300 !mt-6">
               Crafting user-friendly digital experiences that blend creativity
               with functionality
             </p>

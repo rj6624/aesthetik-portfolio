@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import emailjs from "emailjs-com";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -24,6 +25,7 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const form = useRef<HTMLFormElement>(null);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -39,16 +41,38 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    toast({
-      title: "Message sent successfully!",
-      description: "Thank you for reaching out. I'll get back to you soon.",
-    });
-
-    setFormData({ name: "", email: "", message: "" });
-    setIsSubmitting(false);
+    if (form.current) {
+      // TODO: Replace with your own EmailJS credentials
+      emailjs
+        .sendForm(
+          "YOUR_SERVICE_ID",
+          "YOUR_TEMPLATE_ID",
+          form.current,
+          "YOUR_USER_ID"
+        )
+        .then(
+          (result) => {
+            console.log(result.text);
+            toast({
+              title: "Message sent successfully!",
+              description:
+                "Thank you for reaching out. I'll get back to you soon.",
+            });
+            setFormData({ name: "", email: "", message: "" });
+          },
+          (error) => {
+            console.log(error.text);
+            toast({
+              title: "Uh oh! Something went wrong.",
+              description: "There was a problem with your request.",
+              variant: "destructive",
+            });
+          }
+        )
+        .finally(() => {
+          setIsSubmitting(false);
+        });
+    }
   };
 
   const contactInfo = [
@@ -110,7 +134,7 @@ const Contact = () => {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form ref={form} onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="name">Name</Label>
@@ -227,24 +251,7 @@ const Contact = () => {
               </CardContent>
             </Card>
 
-            {/* Call to Action */}
-            <Card className="border-primary/20 bg-gradient-soft shadow-medium">
-              <CardContent className="p-6 text-center">
-                <h3 className="text-lg font-semibold mb-2">
-                  Ready to Start a Project?
-                </h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  I'm currently available for freelance projects and open to
-                  discussing new opportunities.
-                </p>
-                <Button
-                  variant="outline"
-                  className="border-primary/20 hover:bg-primary/5"
-                >
-                  Schedule a Call
-                </Button>
-              </CardContent>
-            </Card>
+
           </div>
         </div>
       </div>

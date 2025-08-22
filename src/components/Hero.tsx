@@ -35,8 +35,8 @@ const Hero = () => {
         <div className="space-y-8">
           {/* Name and Tagline */}
           <div className="space-y-4">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight animate-fade-in-up">
-              <span className="block text-foreground">Alex Johnson</span>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight animate-fade-in-up py-4">
+              <span className="block text-foreground">Jay Rupareliya</span>
               <span className="block gradient-text animate-delay-200">UI/UX Designer</span>
             </h1>
             
@@ -65,30 +65,10 @@ const Hero = () => {
               Download Resume
             </Button>
           </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-3 gap-8 max-w-md mx-auto pt-8 animate-fade-in-up animate-delay-700">
-            <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-bold text-primary">15+</div>
-              <div className="text-sm text-muted-foreground">Projects</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-bold text-primary">2+</div>
-              <div className="text-sm text-muted-foreground">Years Learning</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-bold text-primary">100%</div>
-              <div className="text-sm text-muted-foreground">Passion</div>
-            </div>
-          </div>
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-gentle">
-          <div className="w-6 h-10 border-2 border-primary/30 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-primary rounded-full mt-2 animate-pulse"></div>
-          </div>
-        </div>
+        
       </div>
     </section>
   );

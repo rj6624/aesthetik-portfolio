@@ -53,7 +53,7 @@ const About = () => {
           {/* Left Content */}
           <div className="space-y-6 animate-fade-in-left">
             <div className="space-y-4">
-              <h3 className="text-2xl font-semibold">Hello! I'm Alex Johnson</h3>
+              <h3 className="text-2xl font-semibold">Hello! I'm Jay Rupareliya</h3>
               <p className="text-muted-foreground leading-relaxed">
                 As a fresh UI/UX designer, I bring enthusiasm, creativity, and a strong foundation in design principles to every project. My journey began with a fascination for how design can solve real-world problems and create delightful user experiences.
               </p>

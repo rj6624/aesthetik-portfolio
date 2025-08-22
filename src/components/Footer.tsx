@@ -13,7 +13,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           {/* Copyright */}
           <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-            <span>© {currentYear} Alex Johnson.</span>
+            <span>© {currentYear} Jay Rupareliya.</span>
             <span>Made with</span>
             <Heart className="h-4 w-4 text-red-500 fill-current" />
             <span>and lots of coffee</span>

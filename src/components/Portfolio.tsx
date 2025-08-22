@@ -2,8 +2,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink, Github } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Portfolio = () => {
+  const navigate = useNavigate();
   const projects = [
     {
       id: 1,
@@ -98,8 +100,9 @@ const Portfolio = () => {
           {projects.map((project, index) => (
             <Card
               key={project.id}
-              className="group overflow-hidden border-border/50 shadow-soft hover:shadow-large transition-all duration-500 hover:scale-105 animate-fade-in-up"
+              className="group overflow-hidden border-border/50 shadow-soft hover:shadow-large transition-all duration-500 hover:scale-105 animate-fade-in-up cursor-pointer"
               style={{ animationDelay: `${index * 0.1}s` }}
+              onClick={() => navigate(`/project/${project.id}`)}
             >
               {/* Project Image */}
               <div className="relative overflow-hidden">
@@ -126,10 +129,24 @@ const Portfolio = () => {
                 {/* Hover Actions */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="flex space-x-3">
-                    <Button size="sm" className="bg-background/90 text-foreground hover:bg-background">
+                    <Button 
+                      size="sm" 
+                      className="bg-background/90 text-foreground hover:bg-background"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        // Handle external link
+                      }}
+                    >
                       <ExternalLink className="h-4 w-4" />
                     </Button>
-                    <Button size="sm" className="bg-background/90 text-foreground hover:bg-background">
+                    <Button 
+                      size="sm" 
+                      className="bg-background/90 text-foreground hover:bg-background"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        // Handle Github link
+                      }}
+                    >
                       <Github className="h-4 w-4" />
                     </Button>
                   </div>

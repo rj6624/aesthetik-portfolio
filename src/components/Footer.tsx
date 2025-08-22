@@ -4,7 +4,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -31,8 +31,8 @@ const Footer = () => {
         {/* Bottom Text */}
         <div className="mt-4 pt-4 border-t border-border/30 text-center">
           <p className="text-xs text-muted-foreground">
-            Designed and built with modern tools and best practices. 
-            Always learning, always growing.
+            Designed and built with modern tools and best practices. Always
+            learning, always growing.
           </p>
         </div>
       </div>

@@ -5,31 +5,33 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Linkedin, 
-  Github, 
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Linkedin,
+  Github,
   Dribbble,
   Send,
-  MessageCircle
+  MessageCircle,
 } from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    message: ""
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -38,7 +40,7 @@ const Contact = () => {
     setIsSubmitting(true);
 
     // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
 
     toast({
       title: "Message sent successfully!",
@@ -53,42 +55,36 @@ const Contact = () => {
     {
       icon: Mail,
       label: "Email",
-      value: "alex.johnson@email.com",
-      href: "mailto:alex.johnson@email.com"
+      value: "jay.r2@ahduni.edu.in",
+      href: "mailto:jay.r2@ahduni.edu.in",
     },
     {
       icon: Phone,
       label: "Phone",
-      value: "+1 (555) 123-4567",
-      href: "tel:+15551234567"
+      value: "8320486720",
+      href: "tel:8320486720",
     },
     {
       icon: MapPin,
       label: "Location",
-      value: "San Francisco, CA",
-      href: "#"
-    }
+      value: "Rajkot, India",
+      href: "#",
+    },
   ];
 
   const socialLinks = [
     {
       icon: Linkedin,
       label: "LinkedIn",
-      href: "https://linkedin.com/in/alexjohnson",
-      color: "hover:text-blue-600"
+      href: "https://www.linkedin.com/in/jay-rupareliya-246a45303/",
+      color: "hover:text-blue-600",
     },
     {
       icon: Github,
       label: "GitHub",
-      href: "https://github.com/alexjohnson",
-      color: "hover:text-gray-900 dark:hover:text-gray-100"
+      href: "https://github.com/rj6624",
+      color: "hover:text-gray-900 dark:hover:text-gray-100",
     },
-    {
-      icon: Dribbble,
-      label: "Dribbble",
-      href: "https://dribbble.com/alexjohnson",
-      color: "hover:text-pink-500"
-    }
   ];
 
   return (
@@ -99,7 +95,8 @@ const Contact = () => {
             Let's <span className="gradient-text">Connect</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto animate-fade-in-up animate-delay-100">
-            Ready to start your next project? I'd love to hear about your ideas and discuss how we can work together.
+            Ready to start your next project? I'd love to hear about your ideas
+            and discuss how we can work together.
           </p>
         </div>
 
@@ -141,7 +138,7 @@ const Contact = () => {
                     />
                   </div>
                 </div>
-                
+
                 <div className="space-y-2">
                   <Label htmlFor="message">Message</Label>
                   <Textarea
@@ -193,7 +190,9 @@ const Contact = () => {
                       <info.icon className="h-4 w-4" />
                     </div>
                     <div>
-                      <div className="text-sm font-medium text-foreground">{info.label}</div>
+                      <div className="text-sm font-medium text-foreground">
+                        {info.label}
+                      </div>
                       <div className="text-sm">{info.value}</div>
                     </div>
                   </a>
@@ -222,7 +221,8 @@ const Contact = () => {
                   ))}
                 </div>
                 <p className="text-sm text-muted-foreground mt-4">
-                  Connect with me on social media to see my latest work and design inspiration.
+                  Connect with me on social media to see my latest work and
+                  design inspiration.
                 </p>
               </CardContent>
             </Card>
@@ -230,9 +230,12 @@ const Contact = () => {
             {/* Call to Action */}
             <Card className="border-primary/20 bg-gradient-soft shadow-medium">
               <CardContent className="p-6 text-center">
-                <h3 className="text-lg font-semibold mb-2">Ready to Start a Project?</h3>
+                <h3 className="text-lg font-semibold mb-2">
+                  Ready to Start a Project?
+                </h3>
                 <p className="text-sm text-muted-foreground mb-4">
-                  I'm currently available for freelance projects and open to discussing new opportunities.
+                  I'm currently available for freelance projects and open to
+                  discussing new opportunities.
                 </p>
                 <Button
                   variant="outline"

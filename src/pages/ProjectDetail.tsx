@@ -1,175 +1,215 @@
+import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { ArrowLeft, ExternalLink, Github } from "lucide-react";
 
 const ProjectDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [showAllImages, setShowAllImages] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
 
   // Project data (in a real app, this would come from an API or context)
   const projects = [
     {
       id: 1,
-      title: "FoodieApp - Mobile Food Delivery",
-      description: "A comprehensive food delivery app with intuitive ordering flow, real-time tracking, and personalized recommendations.",
-      fullDescription: "FoodieApp is a modern food delivery solution designed to bridge the gap between hungry customers and local restaurants. The app focuses on creating an intuitive user experience with seamless ordering, real-time tracking, and personalized recommendations based on user preferences and order history.",
-      tags: ["Mobile Design", "User Research", "Prototyping", "Figma"],
-      image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop",
-      category: "Mobile App",
-      status: "Case Study",
-      problem: "Traditional food delivery apps often overwhelm users with too many options and complex navigation, leading to cart abandonment and poor user satisfaction.",
-      solution: "I designed a streamlined interface that prioritizes user preferences, implements smart filtering, and provides clear visual hierarchy to guide users through the ordering process.",
-      process: [
-        "User Research & Competitive Analysis",
-        "Information Architecture & User Flows",
-        "Low-fidelity Wireframes",
-        "High-fidelity Prototypes",
-        "Usability Testing & Iterations"
+      title: "Internal Task Management System",
+      description:
+        "Designed a task management system for project managers, staff, and admins to create projects, assign tasks, track deadlines, and streamline internal workflow efficiently.",
+      fullDescription:
+        "This project involved designing an internal task management system for ZIDIO Development. The goal was to create a centralized platform for project managers, staff, and administrators to manage projects, assign tasks, monitor deadlines, and improve overall workflow efficiency. The system was designed with role-based access control to ensure clear task visibility and appropriate permissions for different user types.",
+      tags: [
+        "User Research",
+        "User Personas",
+        "Competitive Analysis",
+        "Wireframing",
+        "Interactive Prototyping",
       ],
-      tools: ["Figma", "Adobe Illustrator", "Principle", "Maze"],
+      image: "/Taskmanagement/task-management-poster.jpg",
+      category: "UI/UX Design",
+      status: "Case Study",
+      problem:
+        "The company lacked a centralized system to manage internal projects, leading to inefficiencies, missed deadlines, and poor communication between team members. Tasks were tracked using spreadsheets and emails, which was not scalable.",
+      solution:
+        "A role-based task management system was designed with dedicated interfaces for project managers, staff, and admins. This provided clear task visibility, streamlined communication, and allowed for efficient tracking of project progress and deadlines.",
+      process: [
+        "User Research",
+        "User Personas",
+        "Competitive Analysis",
+        "Wireframing",
+        "Interactive Prototyping",
+        "Usability Testing",
+      ],
+      tools: ["Figma"],
       images: [
-        "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop"
-      ]
+        "/Taskmanagement/Add New Project.png",
+        "/Taskmanagement/Add New Task.png",
+        "/Taskmanagement/Add Sub Task.png",
+        "/Taskmanagement/Admin Analytics.png",
+        "/Taskmanagement/Admin Audit logs.png",
+        "/Taskmanagement/Admin Calendar Timeline.png",
+        "/Taskmanagement/Admin Collaboration.png",
+        "/Taskmanagement/Admin Dashboard.png",
+        "/Taskmanagement/Admin Data Management.png",
+        "/Taskmanagement/Admin Log In.png",
+        "/Taskmanagement/Admin Projects.png",
+        "/Taskmanagement/Admin Resource Management.png",
+        "/Taskmanagement/Admin Roles & Permission.png",
+        "/Taskmanagement/Admin Settings.png",
+        "/Taskmanagement/Admin Sign In.png",
+        "/Taskmanagement/Admin Tasks.png",
+        "/Taskmanagement/Assignee Analytics.png",
+        "/Taskmanagement/Assignee Calendar & Timeline.png",
+        "/Taskmanagement/Assignee Collaboration.png",
+        "/Taskmanagement/Assignee Dashboard.png",
+        "/Taskmanagement/Assignee Help & Support.png",
+        "/Taskmanagement/Assignee Log In.png",
+        "/Taskmanagement/Assignee Notification Settings.png",
+        "/Taskmanagement/Assignee Notifications.png",
+        "/Taskmanagement/Assignee Project Brief.png",
+        "/Taskmanagement/Assignee Projects.png",
+        "/Taskmanagement/Assignee Sign Up.png",
+        "/Taskmanagement/Assignee Task Management.png",
+        "/Taskmanagement/Assignee Tasks.png",
+        "/Taskmanagement/Manager Analytics.png",
+        "/Taskmanagement/Manager Calendar Timeline.png",
+        "/Taskmanagement/Manager Collaboration.png",
+        "/Taskmanagement/Manager Dashboard.png",
+        "/Taskmanagement/Manager help & support.png",
+        "/Taskmanagement/Manager Notifications.png",
+        "/Taskmanagement/Manager Project Brief.png",
+        "/Taskmanagement/Manager Projects.png",
+        "/Taskmanagement/Manager Resource Management.png",
+        "/Taskmanagement/Manager Settings.png",
+        "/Taskmanagement/Manager Sign In.png",
+        "/Taskmanagement/Manager Sign Up.png",
+        "/Taskmanagement/Manager Task Management.png",
+        "/Taskmanagement/Manager Tasks.png",
+        "/Taskmanagement/Manger Notification Settings.png",
+        "/Taskmanagement/Select Your Role.png",
+      ],
+      liveLink: "https://www.figma.com/proto/XADWSeD3mFXxRhGTkWfwRi/Zidio-Projects?page-id=721%3A4280&node-id=927-4810&viewport=-31%2C-1185%2C0.06&t=UTU96rjOhYkHhVzY-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=927%3A4810",
+      githubLink: "https://github.com/rj6624",
     },
     {
       id: 2,
-      title: "EcoBank - Sustainable Banking",
-      description: "Modern banking dashboard focused on environmental impact tracking and sustainable investment options.",
-      fullDescription: "EcoBank represents the future of conscious banking, where financial decisions align with environmental values. This digital banking platform helps users track their carbon footprint through spending habits while promoting sustainable investment opportunities.",
-      tags: ["Web Design", "Dashboard", "Sustainability", "UX Research"],
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
-      category: "Web App",
-      status: "Prototype",
-      problem: "Traditional banking apps don't provide transparency about the environmental impact of financial decisions, missing opportunities to promote sustainable choices.",
-      solution: "Created an intuitive dashboard that visualizes environmental impact alongside financial data, making sustainability a core part of the banking experience.",
-      process: [
-        "Market Research & User Interviews",
-        "Persona Development",
-        "Information Architecture",
-        "Wireframing & Prototyping",
-        "Visual Design & Design System"
+      title: "E-learning platform",
+      description:
+        "Designed an e-learning platform from both student and instructor perspectives, incorporating gamified features and an interactive mascot to enhance user engagement.",
+      fullDescription:
+        "This project focused on designing an engaging e-learning platform for ZIDIO Development. The platform was designed for both students and instructors, with a key focus on enhancing user engagement through gamification and an interactive mascot. The goal was to create a more motivating and enjoyable learning experience.",
+      tags: [
+        "User Research",
+        "User Personas",
+        "Competitive Analysis",
+        "Wireframing",
+        "Interactive Prototyping",
+        "Gamification",
       ],
-      tools: ["Figma", "Adobe XD", "InVision", "Photoshop"],
+      image: "/E-learning Platform/Elearning-platform.jpg",
+      category: "UI/UX Design",
+      status: "Case Study",
+      problem:
+        "Many e-learning platforms fail to keep users engaged and motivated. They often lack interactive elements and can feel monotonous, leading to low course completion rates.",
+      solution:
+        "An e-learning platform was designed with gamification elements like badges, points, and leaderboards. An interactive mascot was also introduced to guide users and make the learning process more enjoyable and engaging.",
+      process: [
+        "User Research",
+        "User Personas",
+        "Competitive Analysis",
+        "Wireframing",
+        "Interactive Prototyping",
+        "Gamification Design",
+      ],
+      tools: ["Figma"],
       images: [
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop"
-      ]
+        "/E-learning Platform/Account Settings.png",
+        "/E-learning Platform/Add Module.png",
+        "/E-learning Platform/Admin Dashboard.png",
+        "/E-learning Platform/Blog.png",
+        "/E-learning Platform/Chat Bot.png",
+        "/E-learning Platform/Course Assignment.png",
+        "/E-learning Platform/Course Quiz.png",
+        "/E-learning Platform/Course Video.png",
+        "/E-learning Platform/Courses Overview.png",
+        "/E-learning Platform/Courses.png",
+        "/E-learning Platform/Game Page.png",
+        "/E-learning Platform/Game.png",
+        "/E-learning Platform/Inbox.png",
+        "/E-learning Platform/Instructor Dashboard.png",
+        "/E-learning Platform/Instructor.png",
+        "/E-learning Platform/Landing Page.png",
+        "/E-learning Platform/Log In.png",
+        "/E-learning Platform/Payment Checkout.png",
+        "/E-learning Platform/Progress.png",
+        "/E-learning Platform/Sign Up.png",
+        "/E-learning Platform/Store.png",
+        "/E-learning Platform/Upload New Course.png",
+        "/E-learning Platform/User Dashboard.png",
+      ],
+      liveLink: "https://www.figma.com/proto/XADWSeD3mFXxRhGTkWfwRi/Zidio-Projects?page-id=547%3A5933&node-id=549-5434&p=f&viewport=281%2C309%2C0.02&t=b1z5Hqmm6Cmq48JL-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=549%3A5434",
+      githubLink: "https://github.com/rj6624",
     },
     {
       id: 3,
-      title: "MindfulMe - Mental Health App",
-      description: "Calming and supportive mental health app with meditation guides, mood tracking, and community features.",
-      fullDescription: "MindfulMe is a comprehensive mental wellness platform designed to provide accessible mental health support through guided meditation, mood tracking, and peer community features, all wrapped in a calming and supportive interface.",
-      tags: ["Mobile Design", "Health Tech", "Accessibility", "User Testing"],
-      image: "https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=800&h=600&fit=crop",
-      category: "Mobile App",
-      status: "Case Study",
-      problem: "Mental health apps often feel clinical or overwhelming, creating barriers for users who need accessible, gentle support for their mental wellness journey.",
-      solution: "Designed a warm, approachable interface with calming colors and gentle interactions that make mental health support feel welcoming rather than intimidating.",
-      process: [
-        "User Research with Mental Health Professionals",
-        "Accessibility Guidelines Research",
-        "User Journey Mapping",
-        "Prototyping & User Testing",
-        "Iteration Based on Feedback"
-      ],
-      tools: ["Figma", "Principle", "Adobe After Effects", "Sketch"],
-      images: [
-        "https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1493836512294-502baa1986e2?w=400&h=300&fit=crop"
-      ]
-    },
-    {
-      id: 4,
-      title: "LearnHub - Online Learning Platform",
-      description: "Educational platform redesign focusing on course discovery, progress tracking, and student engagement.",
-      fullDescription: "LearnHub is a comprehensive learning management system redesign that transforms how students discover, engage with, and complete online courses. The platform prioritizes clear progress visualization and social learning features.",
-      tags: ["Web Design", "Education", "Wireframing", "User Journey"],
-      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop",
-      category: "Web Design",
+      title: "Luxury Los Santos",
+      description:
+        "Developed a GTA-V-themed e-commerce platform where users can seamlessly buy and sell luxury items, including cars, penthouses, planes, and yachts.",
+      fullDescription:
+        "Luxury Los Santos is a full-stack e-commerce platform inspired by the game Grand Theft Auto V. It allows users to buy and sell in-game luxury items like cars, penthouses, and yachts using virtual currency. The platform features product browsing, a shopping cart, transaction history, and item filtering.",
+      tags: ["JavaScript", "NodeJS", "ExpressJS", "Bootstrap", "HTML", "CSS"],
+      image:
+        "/Luxury Los Santos/Luxury los santos.jpg",
+      category: "Web Development",
       status: "Live",
-      problem: "Existing learning platforms suffer from poor course discovery, unclear progress tracking, and lack of social engagement features that motivate continued learning.",
-      solution: "Redesigned the platform with intuitive course discovery, gamified progress tracking, and integrated social features to boost engagement and completion rates.",
+      problem:
+        "There was no dedicated, user-friendly platform for players to trade luxury in-game items in a simulated economy, making it difficult to track assets and find items for sale.",
+      solution:
+        "A GTA-themed e-commerce platform was built with features for browsing, buying, and selling items. It includes a virtual currency system, transaction history, and filtering, providing a seamless trading experience.",
       process: [
-        "Stakeholder Interviews",
-        "Competitive Analysis",
-        "User Flow Documentation",
-        "Wireframing & Information Architecture",
-        "High-fidelity Design & Handoff"
+        "Concept & Planning",
+        "Frontend Development (HTML, CSS, Bootstrap)",
+        "Backend Development (NodeJS, ExpressJS)",
+        "Database Integration",
+        "Testing & Deployment",
       ],
-      tools: ["Figma", "Miro", "Adobe Creative Suite", "Principle"],
+      tools: [
+        "VS Code",
+        "Node.js",
+        "Express.js",
+        "PostgreSQL",
+        "Git",
+        "GitHub",
+      ],
       images: [
-        "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=300&fit=crop"
-      ]
+        "/Luxury Los Santos/355557712-5eb5caa4-185a-4db4-b99a-07363631fb39.jpg",
+        "/Luxury Los Santos/355557884-5a2ffba4-17f0-46a6-97cd-3ee6c34c0350.jpg",
+        "/Luxury Los Santos/355557917-8fc72274-65d6-4bd8-b0f7-eb23b1ffb36a.jpg",
+        "/Luxury Los Santos/355557963-598d5413-b8da-44bd-a672-a0028553d733.jpg",
+      ],
+      liveLink: "https://github.com/rj6624/wmc-project",
+      githubLink: "https://github.com/rj6624/Luxury-Los-Santos",
     },
-    {
-      id: 5,
-      title: "TravelBuddy - Trip Planning",
-      description: "Collaborative trip planning tool with budget tracking, itinerary sharing, and local recommendations.",
-      fullDescription: "TravelBuddy simplifies group travel planning by providing collaborative tools for itinerary creation, budget management, and discovering local experiences. The app focuses on reducing the stress of coordinating group trips.",
-      tags: ["Mobile Design", "Travel", "Collaboration", "Maps"],
-      image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&h=600&fit=crop",
-      category: "Mobile App",
-      status: "Prototype",
-      problem: "Planning group trips involves juggling multiple apps, spreadsheets, and communication channels, leading to confusion and missed opportunities.",
-      solution: "Created an all-in-one collaborative platform that centralizes trip planning with real-time collaboration, budget tracking, and local discovery features.",
-      process: [
-        "User Interviews with Frequent Travelers",
-        "Journey Mapping",
-        "Feature Prioritization",
-        "Prototype Development",
-        "Usability Testing"
-      ],
-      tools: ["Figma", "InVision", "Adobe XD", "Marvel"],
-      images: [
-        "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&h=300&fit=crop"
-      ]
-    },
-    {
-      id: 6,
-      title: "SmartHome - IoT Dashboard",
-      description: "Intuitive smart home control interface with energy monitoring, automation rules, and security features.",
-      fullDescription: "SmartHome dashboard provides a unified interface for managing IoT devices, monitoring energy consumption, and creating automation rules. The design prioritizes at-a-glance information and quick device control.",
-      tags: ["Dashboard", "IoT", "Smart Home", "Data Viz"],
-      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop",
-      category: "Dashboard",
-      status: "Case Study",
-      problem: "Smart home ecosystems are fragmented, requiring multiple apps to control different devices, creating a poor user experience and limiting adoption.",
-      solution: "Designed a unified dashboard that provides centralized control, intelligent automation, and clear energy insights in an intuitive interface.",
-      process: [
-        "IoT Market Research",
-        "User Persona Development",
-        "Information Architecture",
-        "Data Visualization Design",
-        "Responsive Design Implementation"
-      ],
-      tools: ["Figma", "Sketch", "Adobe Illustrator", "InVision"],
-      images: [
-        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=300&fit=crop"
-      ]
-    }
   ];
 
-  const project = projects.find(p => p.id === parseInt(id || "0"));
+  const project = projects.find((p) => p.id === parseInt(id || "0"));
 
   if (!project) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4">Project Not Found</h1>
-          <Button onClick={() => navigate('/')}>
+          <Button onClick={() => navigate("/")}>
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Portfolio
           </Button>
@@ -183,10 +223,10 @@ const ProjectDetail = () => {
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <Button 
-            variant="ghost" 
-            onClick={() => navigate('/')}
-            className="hover:bg-primary/5"
+          <Button
+            variant="ghost"
+            onClick={() => navigate("/")}
+            className="hover:bg-[#8A2BE2] hover:text-white"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Portfolio
@@ -200,42 +240,33 @@ const ProjectDetail = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <div className="flex items-center gap-3">
-                <Badge 
-                  className={`${
-                    project.status === "Live" 
-                      ? "bg-success text-success-foreground"
-                      : project.status === "Prototype"
-                      ? "bg-accent text-accent-foreground"
-                      : "bg-primary text-primary-foreground"
-                  }`}
+                <Badge
+                  variant="outline"
+                  className="border-primary/20 text-primary"
                 >
-                  {project.status}
-                </Badge>
-                <Badge variant="outline" className="border-primary/20 text-primary">
                   {project.category}
                 </Badge>
               </div>
-              
+
               <h1 className="text-4xl md:text-5xl font-bold leading-tight">
                 {project.title}
               </h1>
-              
+
               <p className="text-lg text-muted-foreground leading-relaxed">
                 {project.fullDescription}
               </p>
-              
+
               <div className="flex gap-4">
-                <Button className="group">
+                <Button
+                  className="group"
+                  onClick={() => window.open(project.liveLink, "_blank")}
+                >
                   <ExternalLink className="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform" />
-                  View Prototype
-                </Button>
-                <Button variant="outline">
-                  <Github className="h-4 w-4 mr-2" />
-                  Case Study
+                  {project.id === 3 ? "GitHub" : "View"}
                 </Button>
               </div>
             </div>
-            
+
             <div className="relative">
               <img
                 src={project.image}
@@ -257,13 +288,21 @@ const ProjectDetail = () => {
               {/* Problem & Solution */}
               <div className="space-y-8">
                 <Card className="p-8 border-destructive/20">
-                  <h3 className="text-2xl font-bold mb-4 text-destructive">The Problem</h3>
-                  <p className="text-muted-foreground leading-relaxed">{project.problem}</p>
+                  <h3 className="text-2xl font-bold mb-4 text-destructive">
+                    The Problem
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {project.problem}
+                  </p>
                 </Card>
-                
+
                 <Card className="p-8 border-success/20">
-                  <h3 className="text-2xl font-bold mb-4 text-success">The Solution</h3>
-                  <p className="text-muted-foreground leading-relaxed">{project.solution}</p>
+                  <h3 className="text-2xl font-bold mb-4 text-success">
+                    The Solution
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {project.solution}
+                  </p>
                 </Card>
               </div>
 
@@ -272,7 +311,10 @@ const ProjectDetail = () => {
                 <h3 className="text-2xl font-bold mb-6">Design Process</h3>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   {project.process.map((step, index) => (
-                    <Card key={index} className="p-4 text-center border-primary/20">
+                    <Card
+                      key={index}
+                      className="p-4 text-center border-primary/20"
+                    >
                       <div className="w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center mx-auto mb-3 text-sm font-bold">
                         {index + 1}
                       </div>
@@ -285,18 +327,45 @@ const ProjectDetail = () => {
               {/* Project Gallery */}
               <div>
                 <h3 className="text-2xl font-bold mb-6">Project Gallery</h3>
-                <div className="grid md:grid-cols-2 gap-6">
-                  {project.images.map((image, index) => (
-                    <div key={index} className="relative group overflow-hidden rounded-xl">
-                      <img
-                        src={image}
-                        alt={`${project.title} screenshot ${index + 1}`}
-                        className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    </div>
-                  ))}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {project.images
+                    .slice(0, showAllImages ? project.images.length : 8)
+                    .map((image, index) => (
+                      <Dialog key={index}>
+                        <DialogTrigger asChild>
+                          <div className="relative group overflow-hidden rounded-xl cursor-pointer">
+                            <img
+                              src={image}
+                              alt={`${project.title} screenshot ${
+                                index + 1
+                              }`}
+                              className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                            />
+                            <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                          </div>
+                        </DialogTrigger>
+                        <DialogContent className="max-w-4xl p-0">
+                          <img
+                            src={image}
+                            alt={`${project.title} screenshot ${
+                              index + 1
+                            }`}
+                            className="w-full h-auto rounded-lg"
+                          />
+                        </DialogContent>
+                      </Dialog>
+                    ))}
                 </div>
+                {!showAllImages && project.images.length > 8 && (
+                  <div className="text-center mt-6">
+                    <Button
+                      onClick={() => setShowAllImages(true)}
+                      variant="outline"
+                    >
+                      Load More
+                    </Button>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -309,14 +378,6 @@ const ProjectDetail = () => {
                   <div>
                     <p className="text-sm text-muted-foreground">Category</p>
                     <p className="font-medium">{project.category}</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-muted-foreground">Status</p>
-                    <p className="font-medium">{project.status}</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-muted-foreground">Duration</p>
-                    <p className="font-medium">6 weeks</p>
                   </div>
                 </div>
               </Card>
@@ -338,7 +399,11 @@ const ProjectDetail = () => {
                 <h4 className="font-semibold mb-4">Skills Applied</h4>
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
-                    <Badge key={tag} variant="outline" className="text-xs border-primary/20 text-primary">
+                    <Badge
+                      key={tag}
+                      variant="outline"
+                      className="text-xs border-primary/20 text-primary"
+                    >
                       {tag}
                     </Badge>
                   ))}
